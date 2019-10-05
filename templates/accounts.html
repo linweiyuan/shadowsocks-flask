@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}免费Shadowsocks账号{% endblock %}
+
+{% block head %}
+<link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
+{% include 'pagination.html' %}
+<table id="table" class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>IP</th>
+        <th>端口</th>
+        <th>密码</th>
+        <th>加密方式</th>
+        <th>位置</th>
+        <th>状态</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for account in accounts %}
+    <tr>
+        <td>{{ account.ip }}</td>
+        <td>{{ account.port }}</td>
+        <td>{{ account.password }}</td>
+        <td>{{ account.method }}</td>
+        <td>{{ account.location }}</td>
+        <td><a href="{{ account.config }}">{{ account.status }}</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% include 'pagination.html' %}
+{% endblock %}
